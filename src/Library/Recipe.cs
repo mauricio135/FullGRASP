@@ -34,5 +34,18 @@ namespace Full_GRASP_And_SOLID.Library
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
         }
+
+        //Utilizamos el principio Expert para calcular el costo de producción.
+        //Se le asigna a Step que calcule el costo de cada paso unitario, y a Recipe, que sume el costo
+        //de cada paso
+        public double GetProductionCost()
+        {
+            double result = 0;
+            foreach (Step step in this.steps)
+            {
+                result += step.GetStepCost();
+            }
+            return result;
+        }
     }
 }
